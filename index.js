@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import DankState from './src/store'
-import { observer, Provider } from 'mobx-react'
+import { observer } from 'mobx-react'
 import TodoBrowser from './src/todoBrowser'
 import TodoCreator from './src/todoForm'
 import TodoFilter from './src/todoFilter'

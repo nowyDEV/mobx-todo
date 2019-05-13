@@ -1,8 +1,17 @@
-import { observable, action, computed } from 'mobx'
+import { observable, action, computed, reaction } from 'mobx'
 
 class DankState {
-  todos = observable.array()
+  @observable todos = JSON.parse(window.localStorage.getItem('todos')) || []
   @observable activeFilter
+
+  constructor() {
+    reaction(
+      () => this.todos.length,
+      () => {
+        window.localStorage.setItem('todos', JSON.stringify(this.todos))
+      }
+    )
+  }
 
   @action
   addTodo = item => {
