@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import DankState from './src/store'
-import { observer } from 'mobx-react'
+import { observer, Provider } from 'mobx-react'
 import TodoList from './src/todoList'
 import TodoCreator from './src/todoCreator'
 import { generateTodo } from './src/helpers'
@@ -14,25 +14,13 @@ class App extends React.Component {
     this.dankState.addTodo(generateTodo(name))
   }
 
-  handleItemChange = id => {
-    console.log('handleChange', id)
-    this.dankState.toggleTodo(id)
-  }
-
-  handleItemDelete = id => {
-    console.log('handleDelete', id)
-    this.dankState.removeTodo(id)
-  }
-
   render() {
     return (
       <div>
         <h1>Todos</h1>
-        <TodoList
-          items={this.dankState.todos}
-          onItemChange={this.handleItemChange}
-          onItemDelete={this.handleItemDelete}
-        />
+        <Provider store={this.dankState}>
+          <TodoList items={this.dankState.todos} />
+        </Provider>
         <TodoCreator onSubmit={this.handleSubmit} />
       </div>
     )
