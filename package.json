@@ -6,11 +6,13 @@
   "homepage": "https://codesandbox.io/s/v3v0my2370",
   "main": "index.js",
   "dependencies": {
+    "@emotion/core": "10.0.10",
+    "@emotion/styled": "10.0.11",
     "mobx": "5.9.4",
     "mobx-react": "5.4.3",
-    "mobx-react-devtools": "6.1.1",
     "mobx-react-lite": "1.3.2",
     "react": "16.8.6",
+    "react-beautiful-dnd": "11.0.3",
     "react-dom": "16.8.6"
   }
 }

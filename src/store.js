@@ -8,9 +8,15 @@ class DankState {
     reaction(
       () => this.todos.length,
       () => {
-        window.localStorage.setItem('todos', JSON.stringify(this.todos))
+        this.saveData()
       }
     )
+  }
+
+  @action
+  setTodos = items => {
+    this.todos = [...items]
+    this.saveData()
   }
 
   @action
@@ -25,7 +31,7 @@ class DankState {
 
   @action
   toggleTodo = id => {
-    const todoToUpdate = this.todos.find(item => item.id === id)
+    const todoToUpdate = this.getTodo(id)
     todoToUpdate.completed = !todoToUpdate.completed
   }
 
@@ -36,8 +42,14 @@ class DankState {
 
   @action
   editTodo = (id, name) => {
-    const todoToUpdate = this.todos.find(item => item.id === id)
-    todoToUpdate.name = name
+    this.getTodo(id).name = name
+  }
+
+  getTodo = id => this.todos.find(item => item.id === id)
+
+  saveData = () => {
+    window.localStorage.setItem('todos', JSON.stringify(this.todos))
+    console.log('save data')
   }
 
   @computed

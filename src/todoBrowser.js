@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Observer } from 'mobx-react'
-import TodoItem from './todoItem'
+import TodoList from './todoList'
+import { filterTodos } from './helpers'
 
 function TodoBrowser({ items }) {
   const [searchTerm, setSearchTerm] = React.useState('')
@@ -14,13 +15,7 @@ function TodoBrowser({ items }) {
               Browse todos <input type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
             </React.Fragment>
           )}
-          <ul>
-            {items
-              .filter(item => `${item.name}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
-              .map(item => (
-                <TodoItem key={item.id} data={item} />
-              ))}
-          </ul>
+          <TodoList items={filterTodos(items, searchTerm)} />
         </div>
       )}
     </Observer>
