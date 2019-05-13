@@ -1,0 +1,15 @@
+{
+  "name": "mobx-todolist",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://codesandbox.io/s/v3v0my2370",
+  "main": "index.js",
+  "dependencies": {
+    "mobx": "5.9.4",
+    "mobx-react": "5.4.3",
+    "mobx-react-devtools": "6.1.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  }
+}
