@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { observer } from 'mobx-react'
 import TodoItem from './todoItem'
 
 function TodoList({ items, onClick }) {
@@ -11,4 +12,4 @@ function TodoList({ items, onClick }) {
   )
 }
 
-export default TodoList
+export default observer(TodoList)
