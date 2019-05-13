@@ -4,8 +4,10 @@ import { observer, inject } from 'mobx-react'
 function TodoItem({ data, store }) {
   return (
     <li>
-      <input type="checkbox" checked={data.completed} onChange={() => store.toggleTodo(data.id)} />
-      {data.name}
+      <label>
+        <input type="checkbox" checked={data.completed} onChange={() => store.toggleTodo(data.id)} />
+        {data.name}
+      </label>
       <button type="button" onClick={() => store.removeTodo(data.id)}>
         X
       </button>

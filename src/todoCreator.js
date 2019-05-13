@@ -1,10 +1,11 @@
 import * as React from 'react'
+import { validateTodo } from './helpers'
 
 function TodoCreator({ onSubmit }) {
   const [name, setName] = React.useState('')
   const handleSubmit = e => {
     e.preventDefault()
-    onSubmit(name)
+    validateTodo(name) ? onSubmit(name) : window.alert('wrong input (1-255 chars, at least 1 letter)')
     setName('')
   }
 
