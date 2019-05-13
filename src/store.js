@@ -25,6 +25,12 @@ class DankState {
     this.activeFilter = filter
   }
 
+  @action
+  editTodo = (id, name) => {
+    const todoToUpdate = this.todos.find(item => item.id === id)
+    todoToUpdate.name = name
+  }
+
   @computed
   get todoItems() {
     return (

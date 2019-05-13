@@ -3,10 +3,11 @@ import { render } from 'react-dom'
 import DankState from './src/store'
 import { observer, Provider } from 'mobx-react'
 import TodoBrowser from './src/todoBrowser'
-import TodoCreator from './src/todoCreator'
+import TodoCreator from './src/todoForm'
 import TodoFilter from './src/todoFilter'
 import { generateTodo } from './src/helpers'
 
+export const Store = React.createContext()
 @observer
 class App extends React.Component {
   dankState = new DankState()
@@ -24,10 +25,12 @@ class App extends React.Component {
       <div>
         <h1>Todos</h1>
         <TodoFilter onChange={this.handleFilterChange} />
-        <Provider store={this.dankState}>
+        <Store.Provider value={this.dankState}>
           <TodoBrowser items={this.dankState.todoItems} />
-        </Provider>
-        <TodoCreator onSubmit={this.handleSubmit} />
+        </Store.Provider>
+        <div>
+          Add: <TodoCreator onSubmit={this.handleSubmit} />
+        </div>
       </div>
     )
   }
