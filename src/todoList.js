@@ -2,11 +2,11 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import TodoItem from './todoItem'
 
-function TodoList({ items, onClick }) {
+function TodoList({ items, onItemChange, onItemDelete }) {
   return (
     <ul>
       {items.map(item => (
-        <TodoItem key={item.id} data={item} />
+        <TodoItem key={item.id} data={item} onChange={onItemChange} onDelete={onItemDelete} />
       ))}
     </ul>
   )

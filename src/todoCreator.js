@@ -3,7 +3,6 @@ import * as React from 'react'
 function TodoCreator({ onSubmit }) {
   const [name, setName] = React.useState('')
   const handleSubmit = e => {
-    console.log('runrunrun')
     e.preventDefault()
     onSubmit(name)
     setName('')

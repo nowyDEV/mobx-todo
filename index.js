@@ -13,11 +13,26 @@ class App extends React.Component {
   handleSubmit = name => {
     this.dankState.addTodo(generateTodo(name))
   }
+
+  handleItemChange = id => {
+    console.log('handleChange', id)
+    this.dankState.toggleTodo(id)
+  }
+
+  handleItemDelete = id => {
+    console.log('handleDelete', id)
+    this.dankState.removeTodo(id)
+  }
+
   render() {
     return (
       <div>
         <h1>Todos</h1>
-        <TodoList items={this.dankState.todos} />
+        <TodoList
+          items={this.dankState.todos}
+          onItemChange={this.handleItemChange}
+          onItemDelete={this.handleItemDelete}
+        />
         <TodoCreator onSubmit={this.handleSubmit} />
       </div>
     )

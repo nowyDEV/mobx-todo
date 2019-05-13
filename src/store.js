@@ -9,8 +9,14 @@ class DankState {
   }
 
   @action
-  removeTodo = item => {
-    this.todos.remove(item)
+  removeTodo = id => {
+    this.todos.remove(this.todos.find(item => item.id === id))
+  }
+
+  @action
+  toggleTodo = id => {
+    const todo = this.todos.find(item => item.id === id)
+    todo.completed = !todo.completed
   }
 }
 
