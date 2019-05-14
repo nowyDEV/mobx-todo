@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { StyledForm } from './styles'
 
 function TodoFilter({ onChange }) {
   const [filter, setFilter] = React.useState('all')
@@ -7,7 +8,7 @@ function TodoFilter({ onChange }) {
   })
 
   return (
-    <form>
+    <StyledForm>
       <label>
         <input type="radio" value="completed" checked={filter === 'all'} onChange={() => setFilter('all')} />
         All
@@ -25,7 +26,7 @@ function TodoFilter({ onChange }) {
         />
         Completed
       </label>
-    </form>
+    </StyledForm>
   )
 }
 

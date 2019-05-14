@@ -49,7 +49,6 @@ class DankState {
 
   saveData = () => {
     window.localStorage.setItem('todos', JSON.stringify(this.todos))
-    console.log('save data')
   }
 
   @computed

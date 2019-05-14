@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { validateTodo } from './helpers'
+import { validateTodo } from '../../helpers'
 
-function TodoForm({ onSubmit, ...inputProps }) {
+function Form({ onSubmit, ...inputProps }) {
   const [name, setName] = React.useState('')
   const handleSubmit = e => {
     e.preventDefault()
@@ -11,16 +11,10 @@ function TodoForm({ onSubmit, ...inputProps }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        {...inputProps}
-        type="text"
-        placeholder="enter todo"
-        onChange={e => setName(e.target.value)}
-        value={name}
-      />
+      <input {...inputProps} type="text" placeholder="name" onChange={e => setName(e.target.value)} value={name} />
       <button type="submit">Accept</button>
     </form>
   )
 }
 
-export default TodoForm
+export default Form

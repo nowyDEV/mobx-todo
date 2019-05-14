@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { Observer } from 'mobx-react'
-import TodoEditor from './todoForm'
-import { Store } from '../'
+import Editor from '../form'
+import { Store } from '../../'
+import { StyledLi } from './styles'
 
-function TodoItem({ data }) {
+function Item({ data }) {
   const [editView, setEditView] = React.useState(false)
   const store = React.useContext(Store)
 
@@ -11,7 +12,7 @@ function TodoItem({ data }) {
     <Observer>
       {() =>
         editView ? (
-          <TodoEditor
+          <Editor
             autoFocus
             onSubmit={name => {
               store.editTodo(data.id, name)
@@ -19,22 +20,24 @@ function TodoItem({ data }) {
             }}
           />
         ) : (
-          <li>
+          <StyledLi>
             <label>
               <input type="checkbox" checked={data.completed} onChange={() => store.toggleTodo(data.id)} />
               {data.name}
             </label>
-            <button type="button" onClick={() => store.removeTodo(data.id)}>
-              X
-            </button>
-            <button type="button" onClick={() => setEditView(true)}>
-              Edit
-            </button>
-          </li>
+            <div>
+              <button type="button" onClick={() => setEditView(true)}>
+                Edit
+              </button>
+              <button type="button" onClick={() => store.removeTodo(data.id)}>
+                Delete
+              </button>
+            </div>
+          </StyledLi>
         )
       }
     </Observer>
   )
 }
 
-export default TodoItem
+export default Item
