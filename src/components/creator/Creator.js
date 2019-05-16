@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { generateTodo } from '../../helpers'
 import Form from '../form'
-import { StyledForm } from './styles'
+import { StyledDiv } from './styles'
 import { Store } from '../../'
 
 function Creator({ onSubmit }) {
@@ -11,11 +11,11 @@ function Creator({ onSubmit }) {
   }
 
   return (
-    <StyledForm>
+    <StyledDiv>
       <label>
         Add todo: <Form onSubmit={handleSubmit} />
       </label>
-    </StyledForm>
+    </StyledDiv>
   )
 }
 

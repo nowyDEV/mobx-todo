@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const StyledForm = styled('form')`
+export const StyledDiv = styled('div')`
   font-size: 1.4rem;
 
   label {
